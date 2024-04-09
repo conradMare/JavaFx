@@ -1,34 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.geometry.Insets?>
+<!--<?import javafx.scene.control.Label?>-->
+<!--<?import javafx.scene.layout.BorderPane?>-->
+<!--<?import javafx.scene.layout.HBox?>-->
+<!--<?import javafx.geometry.Insets?>-->
+<!--<?import javafx.scene.control.Button?>-->
+<!--<BorderPane xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="com.example.otherlayouts.HelloController">-->
+<!--    <top>-->
+<!--        <Label text="This label is at the top" alignment="center"-->
+<!--               BorderPane.alignment="center"-->
+<!--               style="-fx-border-color: blue; -fx-border-size: 3; -fx-border-style: dashed"/>-->
+<!--    </top>-->
+<!--    <center>-->
+<!--        <Label text="This text is in the center and is really looooooooooooooooooooooooooooooooooooooooooong"/>-->
+<!--    </center>-->
+<!--    <left>-->
+<!--        <Label text="This text is on the left" alignment="center"/>-->
+<!--    </left>-->
+<!--    <right>-->
+<!--        <Label text="This text is on the right"/>-->
+<!--    </right>-->
+<!--    <bottom>-->
+<!--        <HBox spacing="10" alignment="top_right">-->
+<!--            <padding>-->
+<!--                <Insets bottom="10" right="10"/>-->
+<!--            </padding>-->
+<!--            <Button text="Ok" prefWidth="90"/>-->
+<!--            <Button text="Cancel" prefWidth="90"/>-->
+<!--            <Button text="Help" prefWidth="90"/>-->
+<!--        </HBox>-->
+<!--    </bottom>-->
+<!--</BorderPane>-->
+
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.Button?>
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.otherlayouts.HelloController">
-    <top>
-        <Label text="This label is at the top" alignment="center"
-               BorderPane.alignment="center"
-               style="-fx-border-color: blue; -fx-border-size: 3; -fx-border-style: dashed"/>
-    </top>
-    <center>
-        <Label text="This label is in the center position and has really loooooooooooooooooooooooooooooooooooooong text"/>
-    </center>
-    <left>
-        <Label text="This label is in the left position" alignment="center"/>
-    </left>
-    <right>
-        <Label text="This label is in the right position"/>
-    </right>
-    <bottom>
-        <HBox spacing="10" alignment="top_right">
-            <padding>
-                <Insets bottom="10" right="10"/>
-            </padding>
-            <Button text="Ok" prefWidth="90"/>
-            <Button text="Cancel" prefWidth="90"/>
-            <Button text="Help" prefWidth="90"/>
-        </HBox>
-    </bottom>
-</BorderPane>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.otherlayouts.HelloController">
+
+    <Button text="Button One"/>
+    <Button text="Button Two"/>
+    <Button text="Button Three"/>
+    <Button text="Button Four"/>
+    <Button text="Button Five"/>
+    <Button text="Button Six"/>
+    <Button text="Button Seven"/>
+    <Button text="Button Eight"/>
+    <Button text="Button Nine"/>
+    <Button text="Button Ten"/>
+
+</VBox>
