@@ -56,15 +56,27 @@
     <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.columnSpan="2">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="This is Option 1 This is Option 1"/>
-                <String fx:value="This is Option 2 This is Option 2"/>
-                <String fx:value="This is Option 3 This is Option 3"/>
-                <String fx:value="This is Option 4 This is Option 4"/>
-                <String fx:value="This is Option 5 This is Option 5"/>
+                <String fx:value="Option One"/>
+                <String fx:value="Option Two"/>
+                <String fx:value="Option Three"/>
+                <String fx:value="Option Four"/>
+                <String fx:value="Option Five"/>
             </FXCollections>
         </items>
         <value>
-            <String fx:value="This is Option 4 This is Option 4"/>
+            <String fx:value="Option Four"/>
         </value>
     </ComboBox>
+
+    <ChoiceBox GridPane.rowIndex="1" GridPane.columnIndex="4">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="cb 1"/>
+                <String fx:value="cb 2"/>
+                <String fx:value="cb 3"/>
+                <String fx:value="cb 4"/>
+                <String fx:value="cb 5"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
 </GridPane>
