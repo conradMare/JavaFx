@@ -89,17 +89,16 @@
 
     <DatePicker GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
-    <Accordion GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="2"
-                expandedPane="$tp3">
+    <Accordion GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="2" expandedPane="$tp1">
         <panes>
-            <TitledPane text="Titled Pane">
-                <Label text="Label in a Titled Pane"/>
+            <TitledPane fx:id="tp1" text="TitledPane1">
+                <Label text="Label1 in a TitledPane"/>
             </TitledPane>
-            <TitledPane text="Titled Pane 2">
-                <Label text="Label 2 in a Titled Pane"/>
+            <TitledPane text="TitledPane2">
+                <Label text="Label2 in a TitledPane"/>
             </TitledPane>
-            <TitledPane fx:id="tp3" text="Titled Pane 3">
-                <Label text="Label 3 in a Titled Pane"/>
+            <TitledPane text="TitledPane3">
+                <Label text="Label3 in a TitledPane"/>
             </TitledPane>
         </panes>
     </Accordion>
