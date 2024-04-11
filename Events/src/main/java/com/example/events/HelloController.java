@@ -16,6 +16,7 @@ public class HelloController {
 
     @FXML
     private Button byeButton;
+
     @FXML
     private CheckBox ourCheckBox;
 
@@ -31,6 +32,11 @@ public class HelloController {
             System.out.println("Hello, " + nameField.getText());
         } else if(e.getSource().equals(byeButton)) {
             System.out.println("Bye, " + nameField.getText());
+        }
+        try {
+            Thread.sleep(10000);
+        } catch(InterruptedException event) {
+            // we don't care about this
         }
         if (ourCheckBox.isSelected()) {
             nameField.clear();
