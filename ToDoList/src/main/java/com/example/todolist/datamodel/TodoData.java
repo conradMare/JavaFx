@@ -32,9 +32,10 @@ public class TodoData {
         return todoItems;
     }
 
-//    public void setTodoItems(List<TodoItem> todoItems) {
-//        this.todoItems = todoItems;
-//    }
+    // Method for addTodoItem from DialogController:
+    public void addTodoItem(TodoItem todoItem) {
+        todoItems.add(todoItem);
+    }
 
     public void loadTodoItems() throws IOException {
         todoItems = FXCollections.observableArrayList();
