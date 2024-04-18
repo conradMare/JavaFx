@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 public class HelloController {
 
@@ -27,7 +28,6 @@ public class HelloController {
     @FXML
     private Label deadlineLabel;
 
-    // Instance variable for BorderPane:
     @FXML
     private BorderPane mainBorderPane;
 
@@ -54,10 +54,8 @@ public class HelloController {
         todoListView.getSelectionModel().selectFirst();
     }
 
-    // Event handler when the user presses File in the main window, and presses new:
     @FXML
     public void showNewItemDialog() {
-        // Create instance of the Dialog class:
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         try {
@@ -67,6 +65,17 @@ public class HelloController {
             System.out.println("Couldn't load the dialog");
             e.printStackTrace();
             return;
+        }
+
+        // Create instances of the ButtonType class:
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("OK Pressed");
+        } else {
+            System.out.println("Cancel Pressed");
         }
     }
 
