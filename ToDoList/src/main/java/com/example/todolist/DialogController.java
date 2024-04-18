@@ -25,7 +25,7 @@ public class DialogController {
         String details = detailsArea.getText().trim();
         LocalDate deadlineValue = deadlinePicker.getValue();
 
-        // Create a temporary item"
+        // Create a temporary item
         TodoItem newItem = new TodoItem(shortDescription, details, deadlineValue);
         TodoData.getInstance().addTodoItem(newItem);
         return newItem;

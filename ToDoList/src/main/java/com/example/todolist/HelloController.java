@@ -57,7 +57,7 @@ public class HelloController {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         // Add title for Dialog:
-        dialog.setTitle("Add new Todo Item");
+        dialog.setTitle("Create a new Todo Item");
         dialog.setHeaderText("Use this dialog to create a new todo item");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("todoItemDialog.fxml"));
@@ -78,6 +78,7 @@ public class HelloController {
             TodoItem newItem = controller.processResults();
             // Explicitly add the item to the list view: (Reset the list view data by setting its data to the updated list)
             todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
+            //Set item added to be selected when created:
             todoListView.getSelectionModel().select(newItem);
             System.out.println("OK Pressed");
         } else {
