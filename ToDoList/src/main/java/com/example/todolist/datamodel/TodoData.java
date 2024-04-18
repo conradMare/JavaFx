@@ -32,7 +32,6 @@ public class TodoData {
         return todoItems;
     }
 
-    // Method for addTodoItem from DialogController:
     public void addTodoItem(TodoItem todoItem) {
         todoItems.add(todoItem);
     }

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 
 public class DialogController {
 
-    // Instance variables for todoItemDialog.fxml:
     @FXML
     private TextField shortDescriptionField;
 
@@ -21,14 +20,15 @@ public class DialogController {
     @FXML
     private DatePicker deadlinePicker;
 
-    // Method that is going to be doing the processing: (After "OK" is pressed)
-    public void processResults() {
-        // Want to gather the users input, create a new todoItem, add it to our list in todoData instance
+    public TodoItem processResults() {
         String shortDescription = shortDescriptionField.getText().trim();
         String details = detailsArea.getText().trim();
         LocalDate deadlineValue = deadlinePicker.getValue();
 
-        // Get instance and add todoItem:
-        TodoData.getInstance().addTodoItem(new TodoItem(shortDescription, details, deadlineValue));
+        // Create a temporary item"
+        TodoItem newItem = new TodoItem(shortDescription, details, deadlineValue);
+        TodoData.getInstance().addTodoItem(newItem);
+        return newItem;
+//        TodoData.getInstance().addTodoItem(new TodoItem(shortDescription, details, deadlineValue));
     }
 }
