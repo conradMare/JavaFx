@@ -46,9 +46,8 @@ public class HelloController {
             }
         });
 
-        todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
+        todoListView.setItems(TodoData.getInstance().getTodoItems());
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
         todoListView.getSelectionModel().selectFirst();
     }
 
@@ -76,13 +75,11 @@ public class HelloController {
         if(result.isPresent() && result.get() == ButtonType.OK) {
             DialogController controller = fxmlLoader.getController();
             TodoItem newItem = controller.processResults();
-            // Explicitly add the item to the list view: (Reset the list view data by setting its data to the updated list)
-            todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
-            //Set item added to be selected when created:
+//            todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
             todoListView.getSelectionModel().select(newItem);
-            System.out.println("OK Pressed");
-        } else {
-            System.out.println("Cancel Pressed");
+//            System.out.println("OK Pressed");
+//        } else {
+//            System.out.println("Cancel Pressed");
         }
     }
 
