@@ -4,6 +4,8 @@ import com.example.todolist.datamodel.TodoData;
 import com.example.todolist.datamodel.TodoItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -33,7 +35,26 @@ public class HelloController {
     @FXML
     private BorderPane mainBorderPane;
 
+    // Field for ContextMenu
+    @FXML
+    private ContextMenu listContextMenu;
+
     public void initialize() {
+
+        // Initialize the ContextMenu:
+        listContextMenu = new ContextMenu();
+        MenuItem deleteMenuItem = new MenuItem("Delete");
+
+        // EventHandler that is going to process "Delete":
+        deleteMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+                deleteItem(item);
+            }
+        });
+        // Add deleteItem MenuItem itself to ContextMenu:
+        listContextMenu.getItems().add(deleteMenuItem);
 
         todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
             @Override
@@ -53,7 +74,6 @@ public class HelloController {
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
 
-        // Create Cell Factory:
         todoListView.setCellFactory(new Callback<ListView<TodoItem>, ListCell<TodoItem>>() {
             @Override
             public ListCell<TodoItem> call(ListView<TodoItem> param) {
@@ -65,7 +85,7 @@ public class HelloController {
                             setText(null);
                         } else {
                             setText(item.getShortDescription());
-                            if(item.getDeadline().isBefore(LocalDate.now().plusDays(1))) {
+                            if (item.getDeadline().isBefore(LocalDate.now().plusDays(1))) {
                                 setTextFill(Color.RED);
                             } else if (item.getDeadline().equals(LocalDate.now().plusDays(1))) {
                                 setTextFill(Color.GREEN);
@@ -73,6 +93,15 @@ public class HelloController {
                         }
                     }
                 };
+                // Code to add delete association:
+                cell.emptyProperty().addListener(
+                        (obs, wasEmpty, isNowEmpty) -> {
+                            if (isNowEmpty) {
+                                cell.setContextMenu(null);
+                            } else {
+                                cell.setContextMenu(listContextMenu);
+                            }
+                        });
                 return cell;
             }
         });
@@ -110,5 +139,17 @@ public class HelloController {
         TodoItem item = todoListView.getSelectionModel().getSelectedItem();
         itemDetailsTextArea.setText(item.getDetails());
         deadlineLabel.setText(item.getDeadline().toString());
+    }
+
+    public void deleteItem(TodoItem item) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Todo Item");
+        alert.setHeaderText("Delete Item: " + item.getShortDescription());
+        alert.setContentText("Are you sure you want to delete this item? Press OK to confirm or cancel to back out.");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            TodoData.getInstance().deleteTodoItem(item);
+        }
     }
 }
