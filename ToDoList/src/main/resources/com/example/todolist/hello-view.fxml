@@ -23,6 +23,9 @@
             <ToolBar>
                 <HBox>
                     <Button text="New..." onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add a new todo item"/>
+                        </tooltip>
                         <graphic>
                             <ImageView>
                                 <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
