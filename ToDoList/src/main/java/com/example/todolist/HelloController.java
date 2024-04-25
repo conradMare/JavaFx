@@ -2,6 +2,7 @@ package com.example.todolist;
 
 import com.example.todolist.datamodel.TodoData;
 import com.example.todolist.datamodel.TodoItem;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.FilteredList;
@@ -189,6 +190,7 @@ public class HelloController {
         deadlineLabel.setText(item.getDeadline().toString());
     }
 
+    @FXML
     public void deleteItem(TodoItem item) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Todo Item");
@@ -201,7 +203,7 @@ public class HelloController {
         }
     }
 
-    // EventHandler for ToggleButton:
+    @FXML
     public void handleFilterButton() {
         TodoItem selectedItem = todoListView.getSelectionModel().getSelectedItem();
         if (filterToggleButton.isSelected()) {
@@ -218,5 +220,10 @@ public class HelloController {
             filteredList.setPredicate(wantAllItems);
             todoListView.getSelectionModel().select(selectedItem);
         }
+    }
+
+    @FXML
+    public void handleExit() {
+        Platform.exit();
     }
 }
