@@ -4,6 +4,7 @@ import com.example.todolist.datamodel.TodoData;
 import com.example.todolist.datamodel.TodoItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,17 +39,14 @@ public class HelloController {
     @FXML
     private BorderPane mainBorderPane;
 
-    // Field for ContextMenu
     @FXML
     private ContextMenu listContextMenu;
 
     public void initialize() {
 
-        // Initialize the ContextMenu:
         listContextMenu = new ContextMenu();
         MenuItem deleteMenuItem = new MenuItem("Delete");
 
-        // EventHandler that is going to process "Delete":
         deleteMenuItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -55,7 +54,7 @@ public class HelloController {
                 deleteItem(item);
             }
         });
-        // Add deleteItem MenuItem itself to ContextMenu:
+
         listContextMenu.getItems().add(deleteMenuItem);
 
         todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
@@ -72,7 +71,17 @@ public class HelloController {
             }
         });
 
-        todoListView.setItems(TodoData.getInstance().getTodoItems());
+        // Sorted List:
+        SortedList<TodoItem> sortedList = new SortedList<TodoItem>(TodoData.getInstance().getTodoItems(),
+                new Comparator<TodoItem>() {
+                    @Override
+                    public int compare(TodoItem o1, TodoItem o2) {
+                        return o1.getDeadline().compareTo(o2.getDeadline());
+                    }
+                });
+
+//        todoListView.setItems(TodoData.getInstance().getTodoItems());
+        todoListView.setItems(sortedList);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
 
@@ -95,7 +104,7 @@ public class HelloController {
                         }
                     }
                 };
-                // Code to add delete association:
+
                 cell.emptyProperty().addListener(
                         (obs, wasEmpty, isNowEmpty) -> {
                             if (isNowEmpty) {
