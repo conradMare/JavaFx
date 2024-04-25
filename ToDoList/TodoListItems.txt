@@ -7,3 +7,5 @@ This item is due tomorrow	Dentist appointment	25-04-2024
 Due last week	Due last week	17-04-2024
 Toolbar item added	Test	25-04-2024
 New todo item	Test for SortedList	26-04-2024
+SortedList Test	Testing	26-04-2024
+SortedList Test 2	Test	27-04-2024
