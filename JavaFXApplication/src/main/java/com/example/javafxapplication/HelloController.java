@@ -74,7 +74,7 @@ public class HelloController {
 //            e.printStackTrace();
 //        }
         WebEngine engine = webView.getEngine();
-        engine.load("http://www.javafx.com");
+        engine.load("https://www.javafx.com");
     }
 
 }
