@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scenebuilder.HelloController">
+<GridPane alignment="center" stylesheets="@../../../../java/com/example/scenebuilder/styles.css" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scenebuilder.HelloController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -18,7 +18,7 @@
    <children>
       <HBox spacing="5.0" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" text="OK">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="47.0" text="OK">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
